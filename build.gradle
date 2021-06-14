@@ -20,12 +20,13 @@ group 'com.study.book'
 version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
-repositories {
+repositories {A
     mavenCentral()
 }
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 
 }

@@ -1,5 +1,6 @@
 package com.spring.book.springboot.web;
 
+import com.spring.book.springboot.config.auth.LoginUser;
 import com.spring.book.springboot.config.auth.dto.SessionUser;
 import com.spring.book.springboot.service.posts.PostsService;
 import com.spring.book.springboot.web.dto.PostsListResponseDto;
@@ -20,10 +21,11 @@ public class IndexController {
     private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, @LoginUser SessionUser user){
         model.addAttribute("posts",postsService.findAllDesc());
 
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        //@LoginUser라는 어노테이션을 추가함으로서 주석처리
+        /*SessionUser user = (SessionUser) httpSession.getAttribute("user");*/
 
         if(user != null){
             model.addAttribute("userName",user.getName());
